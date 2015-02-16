@@ -1,0 +1,14 @@
+@charset "utf-8";
+.message {
+	height: 50;
+	color: #FFF;
+	font-size: 20px;
+}
+.dfromh {
+	height: 20;
+}
+.datatd {
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+}
