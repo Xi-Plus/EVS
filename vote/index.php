@@ -19,11 +19,11 @@ meta();
 <?php
 include_once("../res/header.php");
 if(($_POST["vote"])){
-	$row=SELECT("*","votelist",null,null,"all");
+	$row=SELECT("*","vote_votelist",null,null,"all");
 	while($temp=mfa($row)){
 		$array[$temp["id"]]=$_POST["v".$temp["id"]];
 	}
-	UPDATE("account",array(array("vote",json_encode($array))),array(array("id",$data["id"])));
+	UPDATE("vote_account",array(array("vote",json_encode($array))),array(array("id",$data["id"])));
 	$message="已送出";
 }
 ?>
@@ -54,11 +54,11 @@ if($message){
 			<td align="center" class="datatd">Vote</td>
 		</tr>
 		<?php
-		$row=mfa(SELECT("*","account",array(array("id",$data["id"]))));
+		$row=mfa(SELECT("*","vote_account",array(array("id",$data["id"]))));
 		str_replace("\r\n","",$row["vote"]);
 		$acct=json_decode($row["vote"],true);
 		
-		$row=SELECT("*","votelist",null,null,"all");
+		$row=SELECT("*","vote_votelist",null,null,"all");
 		while($temp=mfa($row)){
 			str_replace("\r\n","",$temp["vote"]);
 			$array=json_decode($temp["vote"],true);

@@ -1,5 +1,4 @@
 <link href="../res/css.css" rel="stylesheet" type="text/css">
-<link rel="icon" href="../res/icon.ico" type="image/x-icon">
 <?php
 function meta($array=null){
 	$meta["title"]="EVS";

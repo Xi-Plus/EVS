@@ -18,7 +18,7 @@ meta();
 <body Marginwidth="-1" Marginheight="-1" Topmargin="0" Leftmargin="0">
 <?php
 include_once("../res/header.php");
-$row=SELECT("*","account",null,null,"all");
+$row=SELECT("*","vote_account",null,null,"all");
 while($temp=mfa($row)){
 	$array[$temp["id"]]=$_POST["v".$temp["id"]];
 	str_replace("\r\n","",$temp["vote"]);
@@ -44,11 +44,11 @@ while($temp=mfa($row)){
 			<td align="center" class="datatd">Sum</td>
 		</tr>
 		<?php
-		$row=mfa(SELECT("*","account",array(array("id",$data["id"]))));
+		$row=mfa(SELECT("*","vote_account",array(array("id",$data["id"]))));
 		str_replace("\r\n","",$row["vote"]);
 		$acct=json_decode($row["vote"],true);
 		
-		$row=SELECT("*","votelist",null,null,"all");
+		$row=SELECT("*","vote_votelist",null,null,"all");
 		while($temp=mfa($row)){
 			str_replace("\r\n","",$temp["vote"]);
 			$array=json_decode($temp["vote"],true);

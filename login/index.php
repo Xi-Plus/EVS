@@ -13,7 +13,7 @@ if(checklogin()){
 	$noshow=false;
 	?><script>setTimeout(function(){history.back();},1000)</script><?php
 }else if(isset($_POST['user'])){
-	$row = mfa(SELECT(array("id","pwd"),"account",array(array("id",$_POST['user']))));
+	$row = mfa(SELECT(array("id","pwd"),"vote_account",array(array("id",$_POST['user']))));
 	if($row==""){
 		$error="無此帳號";
 		insertlog(0,0,"login",false,"no user");
@@ -23,7 +23,7 @@ if(checklogin()){
 	}else{
 		$cookie=md5(uniqid(rand(),true));
 		setcookie("ELMScookie", $cookie, time()+86400*7, "/");
-		INSERT("session",array(array("id",$row["id"]),array("cookie",$cookie)));
+		INSERT("vote_session",array(array("id",$row["id"]),array("cookie",$cookie)));
 		insertlog(0,$row["id"],"login");
 		$message="登入成功";
 		$noshow=false;
