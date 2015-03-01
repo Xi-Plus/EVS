@@ -7,8 +7,8 @@ include_once("../func/log.php");
 $data=checklogin();
 if($data==false)header("Location: ../login/?from=managebook");
 insertlog($data["id"],$data["id"],"logout");
-DELETE("vote_session",[ ["cookie",$_COOKIE["ELMScookie"]] ]);
-setcookie("ELMScookie", "", time(), "/");
+DELETE("session",[ ["cookie",$_COOKIE["EVScookie"]] ]);
+setcookie("EVScookie", "", time(), "/");
 ?>
 <head>
 <meta charset="UTF-8">
